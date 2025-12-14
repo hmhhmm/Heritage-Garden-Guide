@@ -6,12 +6,22 @@ import {
   PlayCircle, 
   Send, 
   Menu,
+  X,
   Info,
   Leaf,
   Sun,
   Sparkles,
   BookOpen,
-  ArrowRight
+  ArrowRight,
+  Ruler,
+  Eye,
+  TreePine,
+  ArrowUpDown,
+  Clock,
+  Droplets,
+  Users,
+  Award,
+  Target
 } from 'lucide-react';
 
 // --- Mock Data ---
@@ -420,125 +430,115 @@ const HomeScreen = ({ onNavigate }) => {
     <div className="min-h-screen bg-gradient-to-br from-[#FAFAF8] via-[#F5F3EF] to-[#EBE8E0]">
       <div className="relative h-[70vh] overflow-hidden">
         <img 
-          src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&q=80&w=1200" 
-          alt="Heritage Garden" 
+          src="/photo.jpg" 
+          alt="Rumah Penghulu Abu Seman - Heritage Garden" 
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-transparent"></div>
         
         <div className="absolute top-0 left-0 right-0 p-6 flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center">
-              <Leaf className="text-white" size={22} />
+            {/* BWM Logo */}
+            <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-lg p-2">
+              <img src="/logo.png" alt="Badan Warisan Malaysia" className="w-full h-full object-contain" />
             </div>
             <div className="text-white">
-              <h1 className="text-lg font-bold font-serif tracking-tight">Heritage Garden</h1>
-              <p className="text-xs text-white/80">Botanical Collection</p>
+              <h1 className="text-lg font-bold font-serif tracking-tight">Heritage Garden Guide</h1>
+              <p className="text-xs text-white/80">Badan Warisan Malaysia</p>
             </div>
           </div>
-          <button className="w-10 h-10 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center text-white hover:bg-white/30 transition-colors">
+          <button 
+            onClick={() => onNavigate('sidebar')}
+            className="w-10 h-10 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+            title="Menu"
+          >
             <Menu size={20} />
           </button>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 p-8">
+        <div className="absolute bottom-0 left-0 right-0 p-6">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full mb-4">
-              <Sparkles size={16} className="text-[#B8A88A]" />
-              <span className="text-white text-sm font-medium">Discover Traditional Botanicals</span>
+            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full mb-3">
+              <Sparkles size={14} className="text-[#B8A88A]" />
+              <span className="text-white text-xs font-medium">Discover Traditional Botanicals</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 font-serif leading-tight">
+            <h2 className="text-3xl font-bold text-white mb-3 font-serif leading-tight">
               Explore Malaysia's<br />Heritage Plants
             </h2>
-            <p className="text-white/90 text-lg mb-8 max-w-xl leading-relaxed">
-              Journey through centuries of botanical wisdom, from medicinal herbs to culinary treasures.
+            <p className="text-white/90 text-sm mb-6 max-w-xl leading-relaxed">
+              Welcome to the Heritage Garden! Explore the cultural, herbal, and historical plants around Rumah Penghulu Abu Seman.
             </p>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2">
               <button 
                 onClick={() => onNavigate('search')}
-                className="bg-white text-[#2D5016] px-6 py-3 rounded-xl font-semibold flex items-center gap-2 hover:bg-[#B8A88A] hover:text-white transition-all shadow-lg hover:scale-105"
+                className="bg-white text-[#2D5016] px-4 py-2 rounded-xl font-semibold flex items-center gap-2 hover:bg-[#B8A88A] hover:text-white transition-all shadow-lg text-sm"
               >
-                <Search size={20} />
-                Browse Collection
+                <Search size={18} />
+                Search Plants
               </button>
               <button 
                 onClick={() => onNavigate('chat')}
-                className="bg-white/20 backdrop-blur-md text-white px-6 py-3 rounded-xl font-semibold flex items-center gap-2 hover:bg-white/30 transition-all"
+                className="bg-gradient-to-r from-[#B8A88A] to-[#9C8B6E] text-white px-4 py-2 rounded-xl font-semibold flex items-center gap-2 hover:shadow-xl transition-all shadow-lg border-2 border-white/30 text-sm"
               >
-                <MessageSquare size={20} />
-                Ask AI Assistant
+                <MessageSquare size={18} />
+                Ask AI
               </button>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="px-6 py-16 max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h3 className="text-3xl font-bold text-[#1A2E11] mb-3 font-serif">What We Offer</h3>
-          <p className="text-[#5A6B52] text-lg">Comprehensive resources for plant enthusiasts</p>
+      <div className="px-4 py-8 max-w-md mx-auto">
+        {/* Welcome Section */}
+        <div className="text-center mb-6">
+          <h3 className="text-2xl font-bold text-[#1A2E11] mb-2 font-serif">Welcome!</h3>
+          <p className="text-[#5A6B52] text-sm">Discover the traditional botanicals that define our heritage.</p>
+        </div>
+
+        {/* Guided Tours Section */}
+        <div className="mb-6">
+          <div className="flex items-center gap-2 mb-3">
+            <PlayCircle size={20} className="text-[#2D5016]" />
+            <h3 className="text-xl font-bold text-[#1A2E11] font-serif">Guided Audio Tours</h3>
+          </div>
+          
+          {/* Video Card Placeholder */}
+          <div className="bg-gradient-to-br from-[#2D5016] to-[#3D6020] rounded-2xl overflow-hidden shadow-lg mb-3">
+            <div className="aspect-video bg-[#1A2E11]/50 flex items-center justify-center">
+              <div className="text-center text-white">
+                <PlayCircle size={48} className="mx-auto mb-2 opacity-80" />
+                <p className="text-sm font-medium">Audio Tour Coming Soon</p>
+              </div>
+            </div>
+          </div>
+          
+          <button className="w-full bg-[#2D5016] text-white py-2.5 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-[#3D6020] transition-all shadow-md text-sm">
+            <PlayCircle size={18} />
+            Start Tour
+          </button>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="bg-white p-8 rounded-2xl shadow-lg border border-[#E8E6E0] hover:shadow-xl transition-all group">
-            <div className="w-14 h-14 bg-gradient-to-br from-[#6B8E4E] to-[#2D5016] rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-              <BookOpen className="text-white" size={26} />
+        {/* Action Cards - Mobile Optimized */}
+        <div className="grid grid-cols-2 gap-3">
+          <button 
+            onClick={() => onNavigate('search')}
+            className="bg-white p-5 rounded-2xl shadow-md border border-[#E8E6E0] hover:shadow-lg transition-all flex flex-col items-center gap-3"
+          >
+            <div className="w-12 h-12 bg-[#F5F3EF] rounded-full flex items-center justify-center">
+              <Search className="text-[#2D5016]" size={22} />
             </div>
-            <h4 className="text-xl font-bold text-[#1A2E11] mb-3 font-serif">Plant Database</h4>
-            <p className="text-[#5A6B52] leading-relaxed mb-4">
-              Access detailed information on traditional plants, their uses, and care instructions.
-            </p>
-            <button onClick={() => onNavigate('search')} className="text-[#2D5016] font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
-              Explore Now <ArrowRight size={18} />
-            </button>
-          </div>
+            <span className="text-[#1A2E11] font-bold text-sm">Search Plants</span>
+          </button>
 
-          <div className="bg-white p-8 rounded-2xl shadow-lg border border-[#E8E6E0] hover:shadow-xl transition-all group">
-            <div className="w-14 h-14 bg-gradient-to-br from-[#B8A88A] to-[#9C8B6E] rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-              <MessageSquare className="text-white" size={26} />
+          <button 
+            onClick={() => onNavigate('chat')}
+            className="bg-gradient-to-br from-[#8AA883] to-[#6B8E4E] p-5 rounded-2xl shadow-md hover:shadow-lg transition-all flex flex-col items-center gap-3"
+          >
+            <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+              <MessageSquare className="text-white" size={22} />
             </div>
-            <h4 className="text-xl font-bold text-[#1A2E11] mb-3 font-serif">AI Assistant</h4>
-            <p className="text-[#5A6B52] leading-relaxed mb-4">
-              Get instant answers about plant care, traditional uses, and cultivation tips.
-            </p>
-            <button onClick={() => onNavigate('chat')} className="text-[#2D5016] font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
-              Start Chat <ArrowRight size={18} />
-            </button>
-          </div>
-
-          <div className="bg-white p-8 rounded-2xl shadow-lg border border-[#E8E6E0] hover:shadow-xl transition-all group">
-            <div className="w-14 h-14 bg-gradient-to-br from-[#6B8E4E] to-[#B8A88A] rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-              <PlayCircle className="text-white" size={26} />
-            </div>
-            <h4 className="text-xl font-bold text-[#1A2E11] mb-3 font-serif">Guided Tours</h4>
-            <p className="text-[#5A6B52] leading-relaxed mb-4">
-              Experience immersive audio-guided tours through our botanical heritage.
-            </p>
-            <button className="text-[#2D5016] font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
-              Listen Now <ArrowRight size={18} />
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-gradient-to-r from-[#2D5016] to-[#3D6020] py-16 px-6">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-8 text-center text-white">
-          <div>
-            <div className="text-4xl font-bold mb-2">150+</div>
-            <div className="text-white/80">Plant Species</div>
-          </div>
-          <div>
-            <div className="text-4xl font-bold mb-2">500+</div>
-            <div className="text-white/80">Traditional Uses</div>
-          </div>
-          <div>
-            <div className="text-4xl font-bold mb-2">50+</div>
-            <div className="text-white/80">Medicinal Plants</div>
-          </div>
-          <div>
-            <div className="text-4xl font-bold mb-2">24/7</div>
-            <div className="text-white/80">AI Support</div>
-          </div>
+            <span className="text-white font-bold text-sm">Ask AI</span>
+          </button>
         </div>
       </div>
     </div>
@@ -549,11 +549,33 @@ const HomeScreen = ({ onNavigate }) => {
 const SearchScreen = ({ onPlantClick, onBack }) => {
   const [activeFilter, setActiveFilter] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [recentSearches, setRecentSearches] = useState(() => {
+    // Load from localStorage on mount
+    const saved = localStorage.getItem('heritageGardenRecentSearches');
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  // Save search to localStorage
+  const handleSearch = (query) => {
+    if (query.trim() && !recentSearches.includes(query.trim())) {
+      const updated = [query.trim(), ...recentSearches].slice(0, 5); // Keep only 5 recent searches
+      setRecentSearches(updated);
+      localStorage.setItem('heritageGardenRecentSearches', JSON.stringify(updated));
+    }
+  };
+
+  // Remove a recent search
+  const removeRecentSearch = (searchToRemove) => {
+    const updated = recentSearches.filter(s => s !== searchToRemove);
+    setRecentSearches(updated);
+    localStorage.setItem('heritageGardenRecentSearches', JSON.stringify(updated));
+  };
 
   const filteredPlants = PLANTS.filter(p => {
     const matchesFilter = activeFilter === "All" || p.category === activeFilter;
     const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                         p.scientific.toLowerCase().includes(searchQuery.toLowerCase());
+                         p.scientific.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         p.nameEn.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesFilter && matchesSearch;
   });
 
@@ -580,6 +602,11 @@ const SearchScreen = ({ onPlantClick, onBack }) => {
               type="text" 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && searchQuery.trim()) {
+                  handleSearch(searchQuery);
+                }
+              }}
               placeholder="Search by name or scientific name..." 
               className="w-full bg-[#F5F3EF] border-2 border-transparent rounded-2xl py-4 pl-12 pr-4 focus:outline-none focus:border-[#6B8E4E] focus:bg-white transition-all text-[#1A2E11] placeholder:text-[#9CA89A]"
             />
@@ -602,6 +629,38 @@ const SearchScreen = ({ onPlantClick, onBack }) => {
           ))}
         </div>
       </div>
+
+      {/* Recent Searches Section */}
+      {searchQuery === "" && recentSearches.length > 0 && (
+        <div className="px-6 py-6 bg-white border-b border-[#E8E6E0]">
+          <h3 className="text-sm font-semibold text-[#5A6B52] mb-3">Recent Searches</h3>
+          <div className="flex flex-wrap gap-2">
+            {recentSearches.map((search, index) => (
+              <div
+                key={index}
+                className="group inline-flex items-center gap-2 px-4 py-2 bg-[#F5F3EF] text-[#2D5016] rounded-full text-sm font-medium hover:bg-[#6B8E4E] hover:text-white transition-all border border-[#E8E6E0]"
+              >
+                <button
+                  onClick={() => setSearchQuery(search)}
+                  className="flex items-center gap-2"
+                >
+                  <Clock size={14} />
+                  {search}
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    removeRecentSearch(search);
+                  }}
+                  className="opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  <X size={14} />
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
         {filteredPlants.map(plant => (
@@ -646,7 +705,57 @@ const SearchScreen = ({ onPlantClick, onBack }) => {
 
 // --- Plant Detail Screen ---
 const PlantDetailScreen = ({ plant, onBack }) => {
+  const [expandedOverview, setExpandedOverview] = useState(false);
+  const [expandedNutritional, setExpandedNutritional] = useState(false);
+
   if (!plant) return null;
+
+  // Function to determine if text needs "Read More"
+  const needsReadMore = (text, limit = 150) => text.length > limit;
+
+  // Function to truncate text
+  const getTruncatedText = (text, limit = 150) => {
+    if (text.length <= limit) return text;
+    return text.substring(0, limit) + '...';
+  };
+
+  // Parse characteristics into structured data for icons
+  const parseCharacteristics = (characteristics) => {
+    const lines = characteristics.split('.');
+    return lines.map(line => {
+      const trimmed = line.trim();
+      if (!trimmed) return null;
+      
+      if (trimmed.toLowerCase().includes('height')) return { icon: <ArrowUpDown size={18} />, text: trimmed };
+      if (trimmed.toLowerCase().includes('leaves') || trimmed.toLowerCase().includes('leaf')) return { icon: <Leaf size={18} />, text: trimmed };
+      if (trimmed.toLowerCase().includes('flower')) return { icon: <Sparkles size={18} />, text: trimmed };
+      if (trimmed.toLowerCase().includes('growth') || trimmed.toLowerCase().includes('stem')) return { icon: <TreePine size={18} />, text: trimmed };
+      if (trimmed.toLowerCase().includes('fruit')) return { icon: <Sun size={18} />, text: trimmed };
+      return { icon: <Info size={18} />, text: trimmed };
+    }).filter(Boolean);
+  };
+
+  // Parse uses into traditional and modern
+  const parseUses = (uses) => {
+    const sentences = uses.split('.').filter(s => s.trim());
+    const traditional = [];
+    const modern = [];
+    
+    sentences.forEach(sentence => {
+      if (sentence.toLowerCase().includes('traditional') || 
+          sentence.toLowerCase().includes('remedy') ||
+          sentence.toLowerCase().includes('folk medicine')) {
+        traditional.push(sentence.trim());
+      } else {
+        modern.push(sentence.trim());
+      }
+    });
+
+    return { traditional, modern };
+  };
+
+  const characteristics = parseCharacteristics(plant.characteristics);
+  const { traditional, modern } = parseUses(plant.uses);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#FAFAF8] via-[#F5F3EF] to-[#EBE8E0]">
@@ -675,6 +784,7 @@ const PlantDetailScreen = ({ plant, onBack }) => {
 
       <div className="max-w-4xl mx-auto px-6 py-12">
         <div className="space-y-8">
+          {/* Overview with Read More */}
           <div className="bg-white rounded-3xl p-8 shadow-lg border-2 border-[#E8E6E0]">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 bg-gradient-to-br from-[#6B8E4E] to-[#2D5016] rounded-xl flex items-center justify-center">
@@ -682,20 +792,43 @@ const PlantDetailScreen = ({ plant, onBack }) => {
               </div>
               <h3 className="font-bold text-xl text-[#1A2E11] font-serif">Overview</h3>
             </div>
-            <p className="text-[#5A6B52] leading-relaxed text-lg">{plant.overview}</p>
+            <p className="text-[#5A6B52] leading-relaxed text-lg">
+              {expandedOverview || !needsReadMore(plant.overview) 
+                ? plant.overview 
+                : getTruncatedText(plant.overview)}
+            </p>
+            {needsReadMore(plant.overview) && (
+              <button
+                onClick={() => setExpandedOverview(!expandedOverview)}
+                className="mt-3 text-[#2D5016] font-semibold hover:text-[#6B8E4E] transition-colors"
+              >
+                {expandedOverview ? 'Show Less' : 'Read More'}
+              </button>
+            )}
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
+            {/* Physical Characteristics with Icons */}
             <div className="bg-white rounded-3xl p-8 shadow-lg border-2 border-[#E8E6E0]">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 bg-gradient-to-br from-[#B8A88A] to-[#9C8B6E] rounded-xl flex items-center justify-center">
                   <Leaf size={20} className="text-white" />
                 </div>
-                <h3 className="font-bold text-lg text-[#1A2E11] font-serif">Characteristics</h3>
+                <h3 className="font-bold text-lg text-[#1A2E11] font-serif">Physical Characteristics</h3>
               </div>
-              <p className="text-[#5A6B52] leading-relaxed">{plant.characteristics}</p>
+              <div className="space-y-3">
+                {characteristics.map((char, index) => (
+                  <div key={index} className="flex gap-3 items-start">
+                    <div className="w-8 h-8 bg-[#F5F3EF] rounded-lg flex items-center justify-center text-[#6B8E4E] flex-shrink-0 mt-0.5">
+                      {char.icon}
+                    </div>
+                    <span className="text-[#5A6B52] leading-relaxed flex-1">{char.text}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
+            {/* Nutritional Value with Read More */}
             <div className="bg-white rounded-3xl p-8 shadow-lg border-2 border-[#E8E6E0]">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 bg-gradient-to-br from-[#6B8E4E] to-[#B8A88A] rounded-xl flex items-center justify-center">
@@ -703,13 +836,64 @@ const PlantDetailScreen = ({ plant, onBack }) => {
                 </div>
                 <h3 className="font-bold text-lg text-[#1A2E11] font-serif">Nutritional Value</h3>
               </div>
-              <p className="text-[#5A6B52] leading-relaxed">{plant.nutritional}</p>
+              <p className="text-[#5A6B52] leading-relaxed">
+                {expandedNutritional || !needsReadMore(plant.nutritional, 120)
+                  ? plant.nutritional
+                  : getTruncatedText(plant.nutritional, 120)}
+              </p>
+              {needsReadMore(plant.nutritional, 120) && (
+                <button
+                  onClick={() => setExpandedNutritional(!expandedNutritional)}
+                  className="mt-3 text-[#2D5016] font-semibold hover:text-[#6B8E4E] transition-colors"
+                >
+                  {expandedNutritional ? 'Show Less' : 'Read More'}
+                </button>
+              )}
             </div>
           </div>
 
+          {/* Traditional vs Modern Uses as Cards */}
           <div className="bg-gradient-to-br from-[#2D5016] to-[#3D6020] rounded-3xl p-8 shadow-xl">
-            <h3 className="font-bold text-2xl text-white mb-4 font-serif">Traditional & Modern Uses</h3>
-            <p className="text-white/95 leading-relaxed text-lg">{plant.uses}</p>
+            <h3 className="font-bold text-2xl text-white mb-6 font-serif">Traditional vs Modern Uses</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                <div className="flex items-center gap-2 mb-4">
+                  <Clock size={22} className="text-[#B8A88A]" />
+                  <h4 className="text-lg font-bold text-white">Traditional Uses</h4>
+                </div>
+                <ul className="space-y-3">
+                  {traditional.length > 0 ? (
+                    traditional.map((use, index) => (
+                      <li key={index} className="flex gap-3 items-start">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#B8A88A] mt-2 flex-shrink-0"></div>
+                        <span className="text-white/95 leading-relaxed">{use}</span>
+                      </li>
+                    ))
+                  ) : (
+                    <li className="text-white/80">{plant.uses}</li>
+                  )}
+                </ul>
+              </div>
+              
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                <div className="flex items-center gap-2 mb-4">
+                  <Sparkles size={22} className="text-[#B8A88A]" />
+                  <h4 className="text-lg font-bold text-white">Modern Uses</h4>
+                </div>
+                <ul className="space-y-3">
+                  {modern.length > 0 ? (
+                    modern.map((use, index) => (
+                      <li key={index} className="flex gap-3 items-start">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#B8A88A] mt-2 flex-shrink-0"></div>
+                        <span className="text-white/95 leading-relaxed">{use}</span>
+                      </li>
+                    ))
+                  ) : (
+                    <li className="text-white/80">See traditional uses above</li>
+                  )}
+                </ul>
+              </div>
+            </div>
           </div>
 
           <div className="bg-white rounded-3xl p-8 shadow-lg border-2 border-[#E8E6E0]">
@@ -842,14 +1026,270 @@ const ChatScreen = ({ onBack }) => {
   );
 };
 
+// --- Team & Collaborator Screen ---
+const TeamScreen = ({ onBack }) => {
+  const teamMembers = {
+    lead: [
+      { name: "Eireen Syaferya binti Efizan", role: "Project Lead" }
+    ],
+    documentation: [
+      { name: "Long Ji-Rur", role: "Documentation" },
+      { name: "Nur Fatimah Thahirah binti Md Yusof", role: "Documentation" }
+    ],
+    tech: [
+      { name: "Lau Hiap Meng", role: "Technology" },
+      { name: "Valencien Seow Yun Sun", role: "Technology" },
+      { name: "Madhaeys a/l Sathiamoorthy", role: "Technology" }
+    ],
+    design: [
+      { name: "Noorul Jannah binti Aizul Hussin", role: "Design" },
+      { name: "Amira Fatin Hanina binti Azlymin", role: "Design" },
+      { name: "Iman Aminul Hakim bin Badlishah", role: "Design" }
+    ],
+    pr: [
+      { name: "Aisya Saffiyah binti Kamarul Nizam", role: "Public Relations" }
+    ]
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-[#FAFAF8] via-[#F5F3EF] to-[#EBE8E0]">
+      <div className="bg-white border-b border-[#E8E6E0]">
+        <div className="px-6 pt-12 pb-6">
+          <div className="flex items-center gap-4 mb-4">
+            <button 
+              onClick={onBack}
+              className="w-10 h-10 bg-[#F5F3EF] rounded-xl flex items-center justify-center hover:bg-[#E8E6E0] transition-colors"
+            >
+              <ChevronLeft className="text-[#2D5016]" size={22} />
+            </button>
+            <div>
+              <h2 className="text-2xl font-bold text-[#1A2E11] font-serif">Team & Collaborators</h2>
+              <p className="text-[#5A6B52] text-sm">Meet the people behind this project</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-5xl mx-auto px-6 py-12">
+        <div className="space-y-8">
+          {/* BWM Mission */}
+          <div className="bg-gradient-to-br from-[#2D5016] to-[#3D6020] rounded-3xl p-8 shadow-xl">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-20 h-20 bg-white rounded-xl flex items-center justify-center shadow-lg p-2">
+                <img src="/logo.png" alt="Badan Warisan Malaysia" className="w-full h-full object-contain" />
+              </div>
+              <h3 className="font-bold text-2xl text-white font-serif">Badan Warisan Malaysia</h3>
+            </div>
+            <p className="text-white/95 leading-relaxed text-lg">
+              Badan Warisan Malaysia is dedicated to preserving Malaysia's cultural and built heritage. Through education, advocacy, and conservation, we work to protect our nation's historic buildings, cultural landscapes, and traditional knowledge for future generations.
+            </p>
+          </div>
+
+          {/* About This Project */}
+          <div className="bg-white rounded-3xl p-8 shadow-lg border-2 border-[#E8E6E0]">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-[#6B8E4E] to-[#2D5016] rounded-xl flex items-center justify-center">
+                <Target size={24} className="text-white" />
+              </div>
+              <h3 className="font-bold text-2xl text-[#1A2E11] font-serif">About This Project</h3>
+            </div>
+            <p className="text-[#5A6B52] leading-relaxed text-lg">
+              This digital guide enhances accessibility and learning within The Heritage Garden at Rumah Penghulu Abu Seman. By combining traditional botanical knowledge with modern technology, we aim to make Malaysia's rich plant heritage accessible to everyone, preserving cultural wisdom while fostering environmental awareness and appreciation.
+            </p>
+          </div>
+
+          {/* Project Team */}
+          <div className="bg-white rounded-3xl p-8 shadow-lg border-2 border-[#E8E6E0]">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 bg-gradient-to-br from-[#B8A88A] to-[#9C8B6E] rounded-xl flex items-center justify-center">
+                <Users size={24} className="text-white" />
+              </div>
+              <h3 className="font-bold text-2xl text-[#1A2E11] font-serif">Project Team</h3>
+            </div>
+
+            <div className="space-y-8">
+              {/* Lead */}
+              <div>
+                <h4 className="text-lg font-bold text-[#2D5016] mb-3 flex items-center gap-2">
+                  <Award size={18} />
+                  Project Lead
+                </h4>
+                <div className="space-y-2">
+                  {teamMembers.lead.map((member, index) => (
+                    <div key={index} className="bg-[#F5F3EF] rounded-xl p-4">
+                      <p className="font-semibold text-[#1A2E11]">{member.name}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Documentation */}
+              <div>
+                <h4 className="text-lg font-bold text-[#2D5016] mb-3 flex items-center gap-2">
+                  <BookOpen size={18} />
+                  Documentation Team
+                </h4>
+                <div className="grid md:grid-cols-2 gap-3">
+                  {teamMembers.documentation.map((member, index) => (
+                    <div key={index} className="bg-[#F5F3EF] rounded-xl p-4">
+                      <p className="font-semibold text-[#1A2E11]">{member.name}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Tech */}
+              <div>
+                <h4 className="text-lg font-bold text-[#2D5016] mb-3 flex items-center gap-2">
+                  <Sparkles size={18} />
+                  Technology Team
+                </h4>
+                <div className="grid md:grid-cols-2 gap-3">
+                  {teamMembers.tech.map((member, index) => (
+                    <div key={index} className="bg-[#F5F3EF] rounded-xl p-4">
+                      <p className="font-semibold text-[#1A2E11]">{member.name}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Design */}
+              <div>
+                <h4 className="text-lg font-bold text-[#2D5016] mb-3 flex items-center gap-2">
+                  <Leaf size={18} />
+                  Design Team
+                </h4>
+                <div className="grid md:grid-cols-2 gap-3">
+                  {teamMembers.design.map((member, index) => (
+                    <div key={index} className="bg-[#F5F3EF] rounded-xl p-4">
+                      <p className="font-semibold text-[#1A2E11]">{member.name}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* PR */}
+              <div>
+                <h4 className="text-lg font-bold text-[#2D5016] mb-3 flex items-center gap-2">
+                  <MessageSquare size={18} />
+                  Public Relations
+                </h4>
+                <div className="space-y-2">
+                  {teamMembers.pr.map((member, index) => (
+                    <div key={index} className="bg-[#F5F3EF] rounded-xl p-4">
+                      <p className="font-semibold text-[#1A2E11]">{member.name}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// --- Sidebar Component ---
+const Sidebar = ({ isOpen, onClose, onNavigate }) => {
+  const menuItems = [
+    { id: 'search', icon: BookOpen, label: 'Plant Database', description: 'Browse all plants' },
+    { id: 'tour', icon: PlayCircle, label: 'Guided Tours', description: 'Audio experiences' },
+    { id: 'chat', icon: MessageSquare, label: 'AI Assistant', description: 'Ask questions' },
+    { id: 'team', icon: Users, label: 'Team & Collaborators', description: 'About the project' },
+  ];
+
+  if (!isOpen) return null;
+
+  return (
+    <>
+      {/* Backdrop */}
+      <div 
+        className="fixed inset-0 bg-black/50 z-40 animate-in fade-in duration-200"
+        onClick={onClose}
+      />
+      
+      {/* Sidebar */}
+      <div className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl z-50 animate-in slide-in-from-right duration-300">
+        <div className="flex flex-col h-full">
+          {/* Header */}
+          <div className="p-6 border-b border-[#E8E6E0] flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-[#2D5016] rounded-lg flex items-center justify-center">
+                <Leaf size={20} className="text-white" />
+              </div>
+              <div>
+                <h3 className="font-bold text-[#1A2E11] font-serif">Menu</h3>
+                <p className="text-xs text-[#5A6B52]">Heritage Garden</p>
+              </div>
+            </div>
+            <button 
+              onClick={onClose}
+              className="w-8 h-8 bg-[#F5F3EF] rounded-lg flex items-center justify-center hover:bg-[#E8E6E0] transition-colors"
+            >
+              <X size={18} className="text-[#1A2E11]" />
+            </button>
+          </div>
+
+          {/* Menu Items */}
+          <div className="flex-1 overflow-y-auto p-4">
+            <div className="space-y-2">
+              {menuItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => {
+                    onNavigate(item.id);
+                    onClose();
+                  }}
+                  className="w-full bg-[#F5F3EF] hover:bg-[#E8E6E0] rounded-xl p-4 flex items-center gap-4 transition-all group"
+                >
+                  <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+                    <item.icon size={22} className="text-[#2D5016]" />
+                  </div>
+                  <div className="flex-1 text-left">
+                    <h4 className="font-bold text-[#1A2E11] mb-0.5">{item.label}</h4>
+                    <p className="text-xs text-[#5A6B52]">{item.description}</p>
+                  </div>
+                  <ArrowRight size={18} className="text-[#5A6B52] group-hover:translate-x-1 transition-transform" />
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div className="p-6 border-t border-[#E8E6E0] bg-gradient-to-br from-[#2D5016] to-[#3D6020]">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center p-1.5">
+                <img src="/logo.png" alt="BWM" className="w-full h-full object-contain" />
+              </div>
+              <div>
+                <p className="text-white font-bold text-sm">Badan Warisan Malaysia</p>
+                <p className="text-white/70 text-xs">Preserving Heritage</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
 // --- Main App Component ---
 export default function App() {
   const [activeTab, setActiveTab] = useState('home');
   const [selectedPlant, setSelectedPlant] = useState(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handleNavigate = (tab) => {
-    setActiveTab(tab);
-    setSelectedPlant(null);
+    if (tab === 'sidebar') {
+      setSidebarOpen(true);
+    } else if (tab === 'tour') {
+      // For now, tours stay on home page - could navigate to a dedicated tour page later
+      setActiveTab('home');
+    } else {
+      setActiveTab(tab);
+      setSelectedPlant(null);
+    }
   };
 
   const handlePlantClick = (plant) => {
@@ -864,11 +1304,13 @@ export default function App() {
         : <SearchScreen onPlantClick={handlePlantClick} onBack={() => handleNavigate('home')} />;
     }
     if (activeTab === 'chat') return <ChatScreen onBack={() => handleNavigate('home')} />;
+    if (activeTab === 'team') return <TeamScreen onBack={() => handleNavigate('home')} />;
     return <HomeScreen onNavigate={handleNavigate} />;
   };
 
   return (
     <div className="font-sans antialiased bg-white min-h-screen">
+      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} onNavigate={handleNavigate} />
       <main className="h-full">
         {renderContent()}
       </main>
