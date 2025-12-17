@@ -818,7 +818,7 @@ const PlantDetailScreen = ({ plant, onBack }) => {
               </div>
               <div className="space-y-3">
                 {characteristics.map((char, index) => (
-                  <div key={index} className="flex gap-3 items-start">
+                  <div key={index} className="flex gap-3 items-center">
                     <div className="w-8 h-8 bg-[#F5F3EF] rounded-lg flex items-center justify-center text-[#6B8E4E] flex-shrink-0 mt-0.5">
                       {char.icon}
                     </div>
