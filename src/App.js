@@ -21,7 +21,12 @@ import {
   Droplets,
   Users,
   Award,
-  Target
+  Target,
+  Settings,
+  Key,
+  Save,
+  Eye as EyeIcon,
+  EyeOff
 } from 'lucide-react';
 
 // --- Mock Data ---
@@ -417,6 +422,318 @@ const PLANTS = [
     nutritional: "Rich in anthocyanins, antioxidants, and flavonoids.",
     uses: "Flowers used to color Nasi Kerabu blue and to make herbal tea. Traditional remedy for eye health and memory.",
     care: "Light: Full sun.\nWater: Moderate watering.\nSoil: Well-draining, neutral pH soil."
+  },
+  {
+    id: 31,
+    name: "Paku Sarang Burung",
+    nameEn: "Bird's Nest Fern",
+    scientific: "Asplenium nidus",
+    image: "/birds-nest-fern.png",
+    category: "Ornamental",
+    overview: "Bird's Nest Fern is a tropical evergreen fern from the Aspleniaceae family. Native to Southeast Asia, Australia, and the Pacific Islands, it is commonly found growing as an epiphyte on trees or rocks in humid forests. It is highly valued as an ornamental plant due to its large, glossy fronds and ability to thrive indoors.",
+    characteristics: "Height: 60-120 cm tall. Leaves: Large, broad, bright green fronds with wavy edges. Stems: No true stems; fronds emerge from a central rosette. Flowers: None (reproduces via spores). Growth habit: Upright, rosette-forming fern.",
+    nutritional: "Bird's Nest Fern is not typically consumed as food. In some cultures, young fronds have been used medicinally, but it is primarily grown for ornamental and air-purifying purposes.",
+    uses: "Ornamental indoor and outdoor plant. Improves indoor air quality. Traditional herbal remedies (limited use). Landscaping for shaded gardens. Decorative foliage in tropical landscapes.",
+    care: "Light: Bright indirect light to partial shade.\nWater: Keep soil consistently moist, avoid waterlogging.\nSoil: Well-draining, organic-rich soil.\nTemperature: Warm and humid environments.\nPropagation: Spores or division.\nMaintenance: Remove dead fronds; avoid watering directly into the crown."
+  },
+  {
+    id: 32,
+    name: "Bunga Tasbih",
+    nameEn: "Canna Lily / Indian Shot",
+    scientific: "Canna indica",
+    image: "/canna-lily.png",
+    category: "Ornamental",
+    overview: "Canna Lily is a bold, flowering perennial from the Cannaceae family. Native to tropical and subtropical regions of the Americas, it is widely cultivated for its vibrant flowers and lush foliage. Despite its name, it is not a true lily.",
+    characteristics: "Height: 90-250 cm tall. Leaves: Large, banana-like leaves, green to bronze. Stems: Thick, upright stems from rhizomes. Flowers: Bright red, orange, yellow, or pink blooms. Growth habit: Clump-forming perennial.",
+    nutritional: "The rhizomes are rich in starch and have been traditionally used as a food source. Leaves and flowers are sometimes used in herbal remedies.",
+    uses: "Ornamental flowering plant. Rhizomes used for starch production. Traditional medicine applications. Landscape borders and water gardens. Pollinator-attracting plant.",
+    care: "Light: Full sun.\nWater: Regular watering; tolerates wet soil.\nSoil: Fertile, well-drained to moist soil.\nTemperature: Thrives in warm climates.\nHarvesting: Rhizomes can be harvested.\nPropagation: Rhizome division.\nMaintenance: Remove spent flowers and dead leaves."
+  },
+  {
+    id: 33,
+    name: "Bunga Pagoda",
+    nameEn: "Growing Pagoda Flower",
+    scientific: "Clerodendrum paniculatum",
+    image: "/pagoda-flower.png",
+    category: "Ornamental",
+    overview: "Growing Pagoda Flower is a tropical flowering shrub from the Lamiaceae family. Native to Southeast Asia, it is named for its tiered, pagoda-like clusters of bright red flowers.",
+    characteristics: "Height: 1.5-3 m tall. Leaves: Large, heart-shaped leaves. Stems: Upright, branching stems. Flowers: Bright red flowers arranged in tiers. Growth habit: Bushy shrub.",
+    nutritional: "Not consumed as food; valued for ornamental beauty.",
+    uses: "Ornamental landscaping plant. Attracts butterflies and pollinators. Traditional medicinal uses. Tropical garden focal point.",
+    care: "Light: Full sun to partial shade.\nWater: Regular watering.\nSoil: Moist, fertile soil.\nTemperature: Tropical to subtropical climates.\nPropagation: Stem cuttings.\nMaintenance: Pruning to control size."
+  },
+  {
+    id: 34,
+    name: "Pokok Puding",
+    nameEn: "Garden Croton",
+    scientific: "Codiaeum variegatum",
+    image: "/garden-croton.png",
+    category: "Ornamental",
+    overview: "Garden Croton is a popular ornamental shrub from the Euphorbiaceae family. Native to Southeast Asia and the Pacific Islands, it is known for its striking, multicolored foliage.",
+    characteristics: "Height: 1-3 m tall. Leaves: Thick, leathery leaves with vibrant colors. Stems: Woody stems. Flowers: Small, inconspicuous flowers. Growth habit: Upright, bushy shrub.",
+    nutritional: "Croton is not edible and can be toxic if ingested.",
+    uses: "Ornamental foliage plant. Garden borders and hedges. Indoor decorative plant. Landscape color accent.",
+    care: "Light: Bright light to full sun.\nWater: Moderate watering.\nSoil: Well-draining soil.\nTemperature: Warm, humid conditions.\nPropagation: Stem cuttings.\nMaintenance: Regular pruning for shape."
+  },
+  {
+    id: 35,
+    name: "Pokok Ungu",
+    nameEn: "Caricature Plant",
+    scientific: "Graptophyllum pictum",
+    image: "/graptophyllum.png",
+    category: "Medicinal",
+    overview: "Graptophyllum pictum, commonly known as caricature plant, is a tropical shrub from the Acanthaceae family. Native to Papua New Guinea and Southeast Asia, it is valued for its striking variegated foliage and medicinal properties.",
+    characteristics: "Height: 1-3 m tall. Leaves: Broad, glossy leaves with purple, green, and yellow variegation. Stems: Woody, branching stems. Flowers: Tubular, reddish-purple flowers. Growth habit: Upright, bushy shrub.",
+    nutritional: "Not commonly used as food, but leaves are used in traditional herbal medicine.",
+    uses: "Traditional medicine for inflammation and hemorrhoids. Ornamental foliage plant. Hedge and border planting. Herbal remedies in Southeast Asia.",
+    care: "Light: Full sun to partial shade.\nWater: Moderate watering.\nSoil: Well-draining, fertile soil.\nTemperature: Warm tropical climate.\nHarvesting: Leaves harvested for medicinal use.\nPropagation: Stem cuttings.\nMaintenance: Prune to maintain shape."
+  },
+  {
+    id: 36,
+    name: "Bunga Kertas",
+    nameEn: "Bougainvillea",
+    scientific: "Bougainvillea glabra",
+    image: "/bougainvillea.png",
+    category: "Ornamental",
+    overview: "Bunga kertas is a popular flowering ornamental plant from the Nyctaginaceae family. Native to South America, it is widely grown in tropical regions for its vibrant, papery bracts.",
+    characteristics: "Height: 1-12 m (climbing shrub). Leaves: Oval, green leaves. Stems: Woody, thorny stems. Flowers: Small white flowers surrounded by colorful bracts. Growth habit: Climbing or spreading shrub.",
+    nutritional: "Not used as food.",
+    uses: "Ornamental landscaping plant. Decorative hedges and climbers. Bonsai cultivation. Traditional remedies for coughs.",
+    care: "Light: Full sun.\nWater: Low to moderate watering.\nSoil: Well-draining soil.\nTemperature: Warm climates.\nPropagation: Stem cuttings.\nMaintenance: Pruning encourages flowering."
+  },
+  {
+    id: 37,
+    name: "Rami New Zealand",
+    nameEn: "New Zealand Flax",
+    scientific: "Phormium tenax",
+    image: "/nz-flax.png",
+    category: "Ornamental",
+    overview: "New Zealand flax is a perennial evergreen plant from the Asphodelaceae family. Native to New Zealand, it is known for its long, sword-like leaves and architectural form.",
+    characteristics: "Height: 1-3 m tall. Leaves: Long, stiff, sword-shaped leaves. Stems: Flowering stalks emerge from base. Flowers: Red or yellow tubular flowers. Growth habit: Clump-forming perennial.",
+    nutritional: "Not edible.",
+    uses: "Fiber production (traditional weaving). Ornamental landscaping plant. Windbreaks and erosion control.",
+    care: "Light: Full sun to partial shade.\nWater: Moderate watering.\nSoil: Well-draining soil.\nTemperature: Hardy, tolerates cool climates.\nHarvesting: Leaves for fiber.\nPropagation: Division.\nMaintenance: Remove old leaves."
+  },
+  {
+    id: 38,
+    name: "Kemunting Cina",
+    nameEn: "Madagascar Periwinkle",
+    scientific: "Catharanthus roseus",
+    image: "/madagascar-periwinkle.png",
+    category: "Medicinal",
+    overview: "Madagascar periwinkle is a flowering perennial from the Apocynaceae family. Native to Madagascar, it is widely cultivated for its colorful flowers and medicinal importance.",
+    characteristics: "Height: 30-90 cm tall. Leaves: Glossy, oval green leaves. Stems: Soft, branching stems. Flowers: Pink, white, or purple flowers. Growth habit: Bushy herbaceous plant.",
+    nutritional: "Not edible; contains medicinal alkaloids.",
+    uses: "Ornamental flowering plant. Source of anticancer compounds. Traditional medicine. Ground cover plant.",
+    care: "Light: Full sun.\nWater: Moderate watering.\nSoil: Well-draining soil.\nTemperature: Warm climates.\nHarvesting: Leaves for medicinal research.\nPropagation: Seeds or cuttings.\nMaintenance: Low maintenance."
+  },
+  {
+    id: 39,
+    name: "Jati",
+    nameEn: "Teak",
+    scientific: "Tectona grandis",
+    image: "/teak.png",
+    category: "Ornamental",
+    overview: "Tah, commonly known as teak, is a large deciduous tree from the Lamiaceae family. Native to South and Southeast Asia, it is highly valued for its durable hardwood.",
+    characteristics: "Height: 20-40 m tall. Leaves: Large, broad leaves. Stems: Thick woody trunk. Flowers: Small white flowers in clusters. Growth habit: Tall, straight-growing tree.",
+    nutritional: "Not edible.",
+    uses: "Timber and furniture production. Construction and shipbuilding. Traditional medicine. Shade tree.",
+    care: "Light: Full sun.\nWater: Moderate watering.\nSoil: Well-drained soil.\nTemperature: Tropical climate.\nHarvesting: Timber after maturity.\nPropagation: Seeds.\nMaintenance: Minimal once established."
+  },
+  {
+    id: 40,
+    name: "Ungu China",
+    nameEn: "Chinese Violet",
+    scientific: "Asystasia gangetica",
+    image: "/chinese-violet.png",
+    category: "Ornamental",
+    overview: "Chinese violet is a fast-growing flowering plant from the Acanthaceae family. Native to tropical Africa, it is popular as a ground cover and ornamental plant.",
+    characteristics: "Height: 30-60 cm tall. Leaves: Large, soft green leaves. Stems: Creeping, spreading stems. Flowers: Large purple-yellow trumpet-shaped flowers. Growth habit: Spreading ground cover.",
+    nutritional: "Not edible.",
+    uses: "Ornamental ground cover. Landscaping for erosion control. Butterfly-attracting plant.",
+    care: "Light: Full sun to partial shade.\nWater: Regular watering.\nSoil: Well-draining soil.\nTemperature: Warm climates.\nPropagation: Stem cuttings.\nMaintenance: Regular trimming."
+  },
+  {
+    id: 41,
+    name: "Ubi Kayu",
+    nameEn: "Cassava",
+    scientific: "Manihot esculenta",
+    image: "/cassava.png",
+    category: "Culinary",
+    overview: "Cassava is a major tropical food crop from the Euphorbiaceae family. Native to South America, it is widely cultivated for its starchy roots.",
+    characteristics: "Height: 1-3 m tall. Leaves: Palmate leaves with narrow lobes. Stems: Woody stems. Flowers: Small, greenish flowers. Growth habit: Shrubby perennial.",
+    nutritional: "Rich in carbohydrates; contains dietary fiber and vitamin C. Must be properly processed before consumption.",
+    uses: "Staple food crop. Tapioca production. Animal feed. Industrial starch source.",
+    care: "Light: Full sun.\nWater: Moderate watering.\nSoil: Well-draining soil.\nTemperature: Tropical climates.\nHarvesting: Roots harvested after 8-12 months.\nPropagation: Stem cuttings.\nMaintenance: Low maintenance."
+  },
+  {
+    id: 42,
+    name: "Artemisia",
+    nameEn: "Redstem Wormwood",
+    scientific: "Artemisia scoparia",
+    image: "/artemisia.png",
+    category: "Medicinal",
+    overview: "Artemisia scoparia is a medicinal herb from the Asteraceae family. Native to Asia and Europe, it is known for its aromatic foliage.",
+    characteristics: "Height: 30-100 cm tall. Leaves: Fine, feathery leaves. Stems: Slender, upright stems. Flowers: Small yellow flower heads. Growth habit: Upright herb.",
+    nutritional: "Not used as food; medicinal use only.",
+    uses: "Traditional herbal medicine. Antimicrobial and anti-inflammatory uses. Aromatic plant.",
+    care: "Light: Full sun.\nWater: Low to moderate watering.\nSoil: Well-draining soil.\nTemperature: Temperate to warm climates.\nHarvesting: Leaves and stems.\nPropagation: Seeds.\nMaintenance: Minimal."
+  },
+  {
+    id: 43,
+    name: "Palem Wanita",
+    nameEn: "Broadleaf Lady Palm",
+    scientific: "Rhapis excelsa",
+    image: "/broadleaf-lady-palm.png",
+    category: "Ornamental",
+    overview: "Broadleaf lady palm is a slow-growing palm from the Arecaceae family. Native to southern China, it is commonly grown as an indoor and outdoor ornamental plant.",
+    characteristics: "Height: 1-4 m tall. Leaves: Fan-shaped, broad leaves. Stems: Thin, cane-like stems. Flowers: Rare, small flowers. Growth habit: Clump-forming palm.",
+    nutritional: "Not edible.",
+    uses: "Indoor decorative plant. Air-purifying plant. Landscaping in shaded areas.",
+    care: "Light: Bright indirect light to partial shade.\nWater: Moderate watering.\nSoil: Well-draining soil.\nTemperature: Warm conditions.\nPropagation: Division.\nMaintenance: Low maintenance."
+  },
+  {
+    id: 44,
+    name: "Bunga Jarum",
+    nameEn: "Scarlet Jungleflame",
+    scientific: "Ixora coccinea",
+    image: "/ixora.png",
+    category: "Ornamental",
+    overview: "Scarlet jungleflame is a flowering shrub from the Rubiaceae family. Native to South Asia, it is widely grown in tropical gardens.",
+    characteristics: "Height: 1-2 m tall. Leaves: Glossy, oval leaves. Stems: Woody stems. Flowers: Bright red flower clusters. Growth habit: Bushy shrub.",
+    nutritional: "Not edible.",
+    uses: "Ornamental hedge plant. Religious offerings. Traditional medicine.",
+    care: "Light: Full sun.\nWater: Regular watering.\nSoil: Slightly acidic, well-draining soil.\nTemperature: Warm tropical climate.\nHarvesting: Flowers for decoration.\nPropagation: Stem cuttings.\nMaintenance: Regular pruning."
+  },
+  {
+    id: 45,
+    name: "Bromeliad Biru",
+    nameEn: "Blue Bromeliad",
+    scientific: "Aechmea azurea",
+    image: "/aechmea.png",
+    category: "Ornamental",
+    overview: "Aechmea azurea is a tropical bromeliad from the Bromeliaceae family. Native to South America, it is admired for its striking blue-purple flowers.",
+    characteristics: "Height: 60-100 cm tall. Leaves: Long, arching, spiny-edged leaves. Stems: Central flowering spike. Flowers: Blue to purple bracts with small flowers. Growth habit: Rosette-forming epiphyte.",
+    nutritional: "Not edible.",
+    uses: "Ornamental indoor and outdoor plant. Tropical garden displays. Botanical collections.",
+    care: "Light: Bright indirect light.\nWater: Water into central cup.\nSoil: Well-draining, airy medium.\nTemperature: Warm and humid conditions.\nPropagation: Offsets (pups).\nMaintenance: Remove spent flower stalks."
+  },
+  {
+    id: 46,
+    name: "Bunga Kincir",
+    nameEn: "Pinwheelflower",
+    scientific: "Tabernaemontana divaricata",
+    image: "/pinwheelflower.png",
+    category: "Ornamental",
+    overview: "Pinwheelflower is an evergreen flowering shrub from the Apocynaceae family. Native to India and Southeast Asia, it is prized for its fragrant white flowers that resemble pinwheels.",
+    characteristics: "Height: 1-2 m tall. Leaves: Glossy, dark green, oval leaves. Stems: Woody, branching stems. Flowers: White, star-shaped, fragrant flowers with overlapping petals. Growth habit: Compact, bushy shrub.",
+    nutritional: "Not edible; contains alkaloids.",
+    uses: "Ornamental garden plant. Fragrant flowers used in religious ceremonies. Traditional medicine for treating skin ailments and eye infections. Popular hedge plant.",
+    care: "Light: Full sun to partial shade.\nWater: Regular watering.\nSoil: Well-draining, fertile soil.\nTemperature: Warm tropical to subtropical climate.\nHarvesting: Flowers for decoration.\nPropagation: Stem cuttings.\nMaintenance: Prune after flowering to maintain shape."
+  },
+  {
+    id: 47,
+    name: "Pokok Pita",
+    nameEn: "Ribbon Plant",
+    scientific: "Dracaena sanderiana",
+    image: "/ribbon-plant.png",
+    category: "Ornamental",
+    overview: "Ribbon Plant, also known as Lucky Bamboo, is a popular indoor plant from the Asparagaceae family. Native to Central Africa, it is widely grown for its attractive striped foliage and feng shui significance.",
+    characteristics: "Height: 50-150 cm tall. Leaves: Long, slender leaves with white or yellow stripes along margins. Stems: Upright, cane-like stems. Flowers: Rare in cultivation. Growth habit: Upright, clumping.",
+    nutritional: "Not edible; toxic to pets.",
+    uses: "Popular indoor ornamental plant. Feng shui and decorative arrangements. Air-purifying qualities. Gift plant symbolizing good fortune.",
+    care: "Light: Bright indirect light to partial shade.\nWater: Keep soil moist or grow in water.\nSoil: Well-draining potting mix (if soil-grown).\nTemperature: Warm indoor conditions.\nPropagation: Stem cuttings.\nMaintenance: Remove yellowing leaves; change water regularly if grown hydroponically."
+  },
+  {
+    id: 48,
+    name: "Palem Manila",
+    nameEn: "Manila Palm",
+    scientific: "Veitchia merrillii",
+    image: "/manila-palm.png",
+    category: "Ornamental",
+    overview: "Manila Palm, also known as Christmas Palm, is a slender ornamental palm from the Arecaceae family. Native to the Philippines, it is popular in tropical landscaping for its elegant form and bright red fruits.",
+    characteristics: "Height: 6-10 m tall. Leaves: Pinnate, arching fronds with bright green leaflets. Stems: Smooth, green crownshaft with ringed trunk. Flowers: Creamy white flowers. Fruits: Bright red when ripe. Growth habit: Single-trunked palm.",
+    nutritional: "Fruits not typically consumed by humans but attract birds.",
+    uses: "Ornamental landscaping palm. Street and garden specimen. Tropical accent plant. Fruits used as bird food.",
+    care: "Light: Full sun to partial shade.\nWater: Regular watering; drought tolerant once established.\nSoil: Well-draining soil.\nTemperature: Tropical to subtropical climates.\nPropagation: Seeds.\nMaintenance: Remove old fronds and spent fruit clusters."
+  },
+  {
+    id: 49,
+    name: "Paku Kreta",
+    nameEn: "Cretan Brake",
+    scientific: "Pteris cretica",
+    image: "/cretan-brake.png",
+    category: "Ornamental",
+    overview: "Cretan Brake is a hardy fern from the Pteridaceae family. Native to Mediterranean regions and Asia, it is popular as an indoor and outdoor ornamental fern with attractive variegated fronds.",
+    characteristics: "Height: 30-60 cm tall. Leaves: Pinnate fronds with narrow leaflets, often variegated with white or cream stripes. Stems: No true stems; fronds arise from rhizomes. Flowers: None (reproduces via spores). Growth habit: Clumping fern.",
+    nutritional: "Not edible.",
+    uses: "Ornamental indoor plant. Terrarium plant. Shaded garden ground cover. Air-purifying qualities.",
+    care: "Light: Bright indirect light to partial shade.\nWater: Keep soil consistently moist.\nSoil: Well-draining, peat-based soil.\nTemperature: Cool to warm conditions.\nPropagation: Division or spores.\nMaintenance: Remove old fronds; maintain humidity."
+  },
+  {
+    id: 50,
+    name: "Lidah Jin",
+    nameEn: "Snake Plant",
+    scientific: "Sansevieria trifasciata",
+    image: "/snake-plant.png",
+    category: "Ornamental",
+    overview: "Snake Plant, also known as Mother-in-Law's Tongue, is a hardy succulent from the Asparagaceae family. Native to West Africa, it is one of the most popular indoor plants due to its air-purifying abilities and low maintenance requirements.",
+    characteristics: "Height: 30-120 cm tall. Leaves: Stiff, upright, sword-shaped leaves with dark green and light green horizontal bands, yellow margins in some varieties. Stems: No visible stems; leaves grow from underground rhizomes. Flowers: Rare, fragrant white-green flowers. Growth habit: Upright, clumping.",
+    nutritional: "Not edible; mildly toxic if ingested.",
+    uses: "Indoor ornamental plant. Excellent air purifier (removes toxins). Low-maintenance houseplant. Traditional fiber production from leaves.",
+    care: "Light: Low to bright indirect light.\nWater: Low watering; allow soil to dry completely between waterings.\nSoil: Well-draining, sandy soil.\nTemperature: Warm conditions; tolerates drought.\nPropagation: Leaf cuttings or division.\nMaintenance: Minimal; wipe leaves occasionally."
+  },
+  {
+    id: 51,
+    name: "Agave Sempit",
+    nameEn: "Caribbean Agave",
+    scientific: "Agave angustifolia",
+    image: "/agave-angustifolia.png",
+    category: "Ornamental",
+    overview: "Caribbean Agave is a succulent plant from the Asparagaceae family. Native to Mexico and Central America, it is grown for its striking architectural form and drought tolerance.",
+    characteristics: "Height: 60-120 cm tall. Leaves: Long, narrow, stiff, blue-green leaves with sharp terminal spines and marginal teeth. Stems: No stem; leaves form a basal rosette. Flowers: Tall flowering spike with greenish-yellow flowers (plant dies after flowering). Growth habit: Rosette-forming succulent.",
+    nutritional: "Sap traditionally used to make pulque and mezcal beverages.",
+    uses: "Ornamental landscape plant. Drought-tolerant xeriscaping. Traditional fiber and beverage production. Architectural accent plant.",
+    care: "Light: Full sun.\nWater: Low watering; very drought tolerant.\nSoil: Well-draining, sandy or rocky soil.\nTemperature: Warm, dry climates; frost sensitive.\nHarvesting: Sap for traditional uses.\nPropagation: Offsets (pups).\nMaintenance: Minimal; remove spent flower stalk."
+  },
+  {
+    id: 52,
+    name: "Halia Variegata",
+    nameEn: "Variegated Shell Ginger",
+    scientific: "Alpinia zerumbet 'Variegata'",
+    image: "/alpinia-variegata.png",
+    category: "Ornamental",
+    overview: "Variegated Shell Ginger is a striking cultivar of shell ginger from the Zingiberaceae family. This ornamental variety features beautiful variegated foliage with yellow stripes and pink shell-like flowers.",
+    characteristics: "Height: 2-3 m tall. Leaves: Large, lance-shaped with yellow and green variegation, sometimes with pink tints. Stems: Upright, cane-like stems. Flowers: Pink and white, shell-shaped clusters. Growth habit: Clumping perennial.",
+    nutritional: "Leaves can be used for wrapping food; contains aromatic compounds.",
+    uses: "Ornamental foliage plant. Tropical garden specimen. Leaves used for wrapping rice and food. Traditional landscaping for color accent.",
+    care: "Light: Partial shade to full sun.\nWater: Regular watering; keep moist.\nSoil: Rich, well-draining soil.\nTemperature: Tropical to subtropical climates.\nPropagation: Division of rhizomes.\nMaintenance: Remove old stems; protect from strong winds."
+  },
+  {
+    id: 53,
+    name: "Iris Kuning",
+    nameEn: "Yellow Flag Iris",
+    scientific: "Iris pseudacorus",
+    image: "/yellow-flag-iris.png",
+    category: "Ornamental",
+    overview: "Yellow Flag Iris is a perennial aquatic plant from the Iridaceae family. Native to Europe, North Africa, and western Asia, it is grown for its bright yellow flowers and ability to thrive in wet conditions.",
+    characteristics: "Height: 60-150 cm tall. Leaves: Long, sword-shaped, blue-green leaves. Stems: Upright flowering stems. Flowers: Bright yellow iris flowers with brown or purple markings. Growth habit: Clumping, rhizomatous perennial.",
+    nutritional: "Not edible; rhizomes are toxic.",
+    uses: "Ornamental water garden plant. Pond and wetland landscaping. Natural water filtration. Erosion control along waterways.",
+    care: "Light: Full sun to partial shade.\nWater: Grows in wet soil or shallow water (up to 30 cm deep).\nSoil: Rich, moist to waterlogged soil.\nTemperature: Hardy; tolerates cold climates.\nPropagation: Division of rhizomes or seeds.\nMaintenance: Remove spent flowers and seed pods to prevent invasive spread."
+  },
+  {
+    id: 54,
+    name: "Kunyit Putih",
+    nameEn: "White Turmeric / Shellplant",
+    scientific: "Curcuma zedoaria",
+    image: "/curcuma-zedoaria.png",
+    category: "Medicinal",
+    overview: "White Turmeric, also known as Zedoary or Shellplant, is a perennial herb from the Zingiberaceae family. Native to India and Southeast Asia, it is valued for its medicinal rhizomes and ornamental flowers.",
+    characteristics: "Height: 1-1.5 m tall. Leaves: Large, oblong leaves with purple-red undersides. Stems: Leafy pseudostems. Flowers: Pink to red bracts with yellow flowers emerging from center. Rhizomes: Aromatic, yellowish-white inside. Growth habit: Clumping perennial.",
+    nutritional: "Rhizomes contain curcuminoids and essential oils with anti-inflammatory and antimicrobial properties.",
+    uses: "Traditional medicine for digestive disorders, cancer prevention, and inflammation. Rhizomes used as spice in cooking. Ornamental flowering plant. Traditional remedies for menstrual disorders.",
+    care: "Light: Partial shade to full sun.\nWater: Regular watering; keep soil moist.\nSoil: Rich, well-draining soil.\nTemperature: Tropical climates.\nHarvesting: Rhizomes after 8-10 months.\nPropagation: Rhizome division.\nMaintenance: Remove dead foliage; mulch to retain moisture."
   }
 ];
 
@@ -922,15 +1239,55 @@ const PlantDetailScreen = ({ plant, onBack }) => {
 const ChatScreen = ({ onBack }) => {
   const [messages, setMessages] = useState(CHAT_MESSAGES);
   const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const endRef = useRef(null);
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!input.trim()) return;
-    setMessages([...messages, { id: Date.now(), sender: 'user', text: input }]);
+    
+    const userMessage = { id: Date.now(), sender: 'user', text: input };
+    setMessages(prev => [...prev, userMessage]);
+    const userInput = input;
     setInput("");
-    setTimeout(() => {
-      setMessages(prev => [...prev, { id: Date.now() + 1, sender: 'bot', text: "I'm still learning about the garden! Ask me about specific plants like Brazilian Spinach or Turmeric for detailed information." }]);
-    }, 1000);
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('http://localhost:3001/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: userInput,
+          history: messages.slice(1).map(msg => ({
+            role: msg.sender === 'user' ? 'user' : 'assistant',
+            content: msg.text
+          }))
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Backend server error');
+      }
+
+      const data = await response.json();
+      
+      const botMessage = {
+        id: Date.now() + 1,
+        sender: 'bot',
+        text: data.response
+      };
+      
+      setMessages(prev => [...prev, botMessage]);
+    } catch (error) {
+      setMessages(prev => [...prev, { 
+        id: Date.now() + 1, 
+        sender: 'bot', 
+        text: `Error: ${error.message}. Make sure the backend server is running (npm run server).` 
+      }]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -953,7 +1310,7 @@ const ChatScreen = ({ onBack }) => {
           >
             <ChevronLeft className="text-[#2D5016]" size={22} />
           </button>
-          <div>
+          <div className="flex-1">
             <h2 className="text-2xl font-bold text-[#1A2E11] font-serif">AI Assistant</h2>
             <p className="text-[#5A6B52] text-sm">Ask about plants & care</p>
           </div>
@@ -1001,6 +1358,22 @@ const ChatScreen = ({ onBack }) => {
             </div>
           </div>
         ))}
+        
+        {isLoading && (
+          <div className="flex justify-start">
+            <div className="bg-white text-[#1A2E11] border-2 border-[#E8E6E0] rounded-3xl rounded-tl-md p-5 shadow-lg">
+              <div className="flex items-center gap-2">
+                <div className="flex gap-1">
+                  <div className="w-2 h-2 bg-[#6B8E4E] rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                  <div className="w-2 h-2 bg-[#6B8E4E] rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                  <div className="w-2 h-2 bg-[#6B8E4E] rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                </div>
+                <span className="text-sm text-[#5A6B52]">Thinking...</span>
+              </div>
+            </div>
+          </div>
+        )}
+        
         <div ref={endRef} />
       </div>
 
@@ -1009,13 +1382,14 @@ const ChatScreen = ({ onBack }) => {
           <input 
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+            onKeyDown={(e) => e.key === 'Enter' && !isLoading && handleSend()}
             placeholder="Type your question..." 
-            className="w-full bg-[#F5F3EF] border-2 border-transparent rounded-2xl py-4 pl-6 pr-14 focus:outline-none focus:border-[#6B8E4E] focus:bg-white transition-all text-[#1A2E11] placeholder:text-[#9CA89A]"
+            disabled={isLoading}
+            className="w-full bg-[#F5F3EF] border-2 border-transparent rounded-2xl py-4 pl-6 pr-14 focus:outline-none focus:border-[#6B8E4E] focus:bg-white transition-all text-[#1A2E11] placeholder:text-[#9CA89A] disabled:opacity-50"
           />
           <button 
             onClick={handleSend}
-            disabled={!input.trim()}
+            disabled={!input.trim() || isLoading}
             className="absolute right-2 top-2 p-3 bg-gradient-to-br from-[#6B8E4E] to-[#2D5016] text-white rounded-xl hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <Send size={20} />
@@ -1034,7 +1408,8 @@ const TeamScreen = ({ onBack }) => {
     ],
     documentation: [
       { name: "Long Ji-Rui", role: "Documentation" },
-      { name: "Nur Fatimah Thahirah binti Md Yusof", role: "Documentation" }
+      { name: "Nur Fatimah Thahirah binti Md Yusof", role: "Documentation" },
+      { name: "Tanish Rajah", role: "Documentation" },
     ],
     tech: [
       { name: "Lau Hiap Meng", role: "Technology" },

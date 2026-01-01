@@ -6,13 +6,18 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "node server.js",
+    "dev": "concurrently \"npm run server\" \"npm start\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "Heritage Garden Guide - A mobile-first React web application",
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
     "lucide-react": "^0.555.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -33,6 +38,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.22",
+    "concurrently": "^9.1.2",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.18"
   }
