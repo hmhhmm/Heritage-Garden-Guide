@@ -743,6 +743,7 @@ const CHAT_MESSAGES = [
 
 // --- Home Screen ---
 const HomeScreen = ({ onNavigate }) => {
+  const [showVideo, setShowVideo] = React.useState(false);
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#FAFAF8] via-[#F5F3EF] to-[#EBE8E0]">
       <div className="relative h-[70vh] overflow-hidden">
@@ -816,20 +817,39 @@ const HomeScreen = ({ onNavigate }) => {
         <div className="mb-6">
           <div className="flex items-center gap-2 mb-3">
             <PlayCircle size={20} className="text-[#2D5016]" />
-            <h3 className="text-xl font-bold text-[#1A2E11] font-serif">Guided Audio Tours</h3>
+            <h3 className="text-xl font-bold text-[#1A2E11] font-serif">Guided Tour</h3>
           </div>
           
-          {/* Video Card Placeholder */}
-          <div className="bg-gradient-to-br from-[#2D5016] to-[#3D6020] rounded-2xl overflow-hidden shadow-lg mb-3">
-            <div className="aspect-video bg-[#1A2E11]/50 flex items-center justify-center">
-              <div className="text-center text-white">
-                <PlayCircle size={48} className="mx-auto mb-2 opacity-80" />
-                <p className="text-sm font-medium">Audio Tour Coming Soon</p>
-              </div>
-            </div>
-          </div>
+        {/* Video Card */}
+<div
+  onClick={() => setShowVideo(true)}
+  className="bg-gradient-to-br from-[#2D5016] to-[#3D6020] rounded-2xl overflow-hidden shadow-lg mb-3 cursor-pointer hover:scale-[1.01] transition-all"
+>
+  <div className="aspect-video relative">
+    {/* Video preview */}
+    <video
+      src="/tour.mp4"
+      poster="/tour-cover.png"
+      preload="metadata"
+      muted
+      playsInline
+      className="absolute inset-0 w-full h-full object-cover"
+    />
+
+    {/* Overlay */}
+    <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+      <div className="text-center text-white">
+        <PlayCircle size={48} className="mx-auto mb-2 opacity-90" />
+        <p className="text-sm font-medium">The Tour is ready!</p>
+        <p className="text-xs text-white/70 mt-1">Tap to start</p>
+      </div>
+    </div>
+  </div>
+</div>
           
-          <button className="w-full bg-[#2D5016] text-white py-2.5 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-[#3D6020] transition-all shadow-md text-sm">
+          <button 
+          onClick={() => setShowVideo(true)}
+          className="w-full bg-[#2D5016] text-white py-2.5 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-[#3D6020] transition-all shadow-md text-sm">
             <PlayCircle size={18} />
             Start Tour
           </button>
@@ -858,6 +878,27 @@ const HomeScreen = ({ onNavigate }) => {
           </button>
         </div>
       </div>
+      {showVideo && (
+  <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center">
+    <div className="relative w-[90%] max-w-3xl bg-black rounded-2xl overflow-hidden">
+      
+      <button
+        onClick={() => setShowVideo(false)}
+        className="absolute top-3 right-3 z-10 bg-black/60 text-white w-8 h-8 rounded-full flex items-center justify-center"
+      >
+        ✕
+      </button>
+
+      <video
+        src="/tour.mp4"
+        controls
+        autoPlay
+        className="w-full h-auto"
+      />
+    </div>
+  </div>
+)}
+
     </div>
   );
 };
