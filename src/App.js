@@ -840,7 +840,6 @@ const HomeScreen = ({ onNavigate }) => {
     <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
       <div className="text-center text-white">
         <PlayCircle size={48} className="mx-auto mb-2 opacity-90" />
-        <p className="text-sm font-medium">The Tour is ready!</p>
         <p className="text-xs text-white/70 mt-1">Tap to start</p>
       </div>
     </div>
