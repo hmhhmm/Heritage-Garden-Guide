@@ -743,7 +743,7 @@ const CHAT_MESSAGES = [
 
 // --- Home Screen ---
 const HomeScreen = ({ onNavigate }) => {
-  const [showVideo, setShowVideo] = React.useState(false);
+  const [showVideo, setShowVideo] = useState(false);
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#FAFAF8] via-[#F5F3EF] to-[#EBE8E0]">
       <div className="relative h-[70vh] overflow-hidden">
@@ -826,13 +826,10 @@ const HomeScreen = ({ onNavigate }) => {
   className="bg-gradient-to-br from-[#2D5016] to-[#3D6020] rounded-2xl overflow-hidden shadow-lg mb-3 cursor-pointer hover:scale-[1.01] transition-all"
 >
   <div className="aspect-video relative">
-    {/* Video preview */}
-    <video
-      src="/tour.mp4"
-      poster="/tour-cover.png"
-      preload="metadata"
-      muted
-      playsInline
+    {/* Thumbnail ONLY */}
+    <img
+      src="/tour-cover.png"
+      alt="Guided Tour Preview"
       className="absolute inset-0 w-full h-full object-cover"
     />
 
@@ -877,30 +874,32 @@ const HomeScreen = ({ onNavigate }) => {
           </button>
         </div>
       </div>
-      {showVideo && (
-  <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center">
-    <div className="relative w-[90%] max-w-3xl bg-black rounded-2xl overflow-hidden">
-      
+     {showVideo && (
+  <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
+    <div className="relative w-full max-w-3xl aspect-video bg-black rounded-xl overflow-hidden">
       <button
         onClick={() => setShowVideo(false)}
-        className="absolute top-3 right-3 z-10 bg-black/60 text-white w-8 h-8 rounded-full flex items-center justify-center"
+        className="absolute top-2 right-2 text-white bg-black/50 rounded-full px-2 py-1 z-10"
       >
         ✕
       </button>
 
-      <video
-        src="/tour.mp4"
-        controls
-        autoPlay
-        className="w-full h-auto"
+      <iframe
+        src="https://www.youtube.com/embed/ZEUHCFXKSQE?autoplay=1"
+        title="Guided Tour Video"
+        className="w-full h-full"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowFullScreen
       />
     </div>
   </div>
 )}
 
+
     </div>
   );
 };
+export { HomeScreen };
 
 // --- Search Screen ---
 const SearchScreen = ({ onPlantClick, onBack }) => {
